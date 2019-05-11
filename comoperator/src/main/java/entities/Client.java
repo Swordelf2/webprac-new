@@ -1,6 +1,8 @@
 package entities;
 
 import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -19,20 +21,20 @@ public class Client {
     private BigDecimal balance = new BigDecimal(0.00);
     private BigDecimal creditlimit = new BigDecimal(100.00);
     private Integer credittime = 5;
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Activatedservice> activatedservices = new ArrayList<Activatedservice>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Charge> charges = new ArrayList<Charge>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Contact> contacts = new ArrayList<Contact>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Credit> credits = new ArrayList<Credit>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Deposit> deposits = new ArrayList<Deposit>();
 
     public Client() {

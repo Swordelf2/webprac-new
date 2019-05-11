@@ -19,7 +19,7 @@
         <property name="password" value="${db.password}"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
             <props>
@@ -41,7 +41,7 @@
         </property>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
@@ -58,5 +58,8 @@
     <bean id="ClientService" class="service.ClientService"/>
     <bean id="ServiceService" class="service.ServiceService"/>
     <bean id="ActivatedserviceService" class="service.ActivatedserviceService"/>
+    <bean id="ChargeService" class="service.ChargeService"/>
+    <bean id="CreditService" class="service.CreditService"/>
+    <bean id="DepositService" class="service.DepositService"/>
 
     </beans>

@@ -23,7 +23,7 @@
     </tr>
 </table>
 <a href="clientEdit?id=${client.id}">Редактировать</a> <br>
-<a href="clientAcctount?id=${client.id}">Счет</a> <br>
+<a href="clientAccount?id=${client.id}">Счет</a> <br>
 <a href="serviceHistory?id=${client.id}">История услуг</a> <br>
 Список контактов: <br>
 <table border="2px">

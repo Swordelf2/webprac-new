@@ -44,6 +44,7 @@
     </tr>
     </c:forEach>
 </table>
+<a href="newDeposit?id=${client.id}">Регистрация поступления</a> <br>
 
 Списания:<br>
 <table border="2px">
@@ -60,6 +61,7 @@
     </tr>
     </c:forEach>
 </table>
+<a href="newCharge?id=${client.id}">Регистрация списания</a> <br>
 
 Действуйщие кредиты:<br>
 <table border="2px">
@@ -76,5 +78,6 @@
     </tr>
     </c:forEach>
 </table>
+<a href="newCredit?id=${client.id}">Регистрация кредита</a> <br>
 </body>
 </html>
