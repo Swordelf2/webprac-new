@@ -15,7 +15,7 @@ public class Charge {
     private Timestamp time;
     @ManyToOne
     private Client client;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Service service;
 
     public Charge() {

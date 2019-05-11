@@ -34,13 +34,13 @@ public class ActivatedserviceDao {
         return activatedservices;
     }
 
-    public int add(Activatedservice activatedservice)
+    public Activatedservice add(Activatedservice activatedservice)
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(activatedservice);
         session.flush();
         session.close();
-        return (Integer) id;
+        return (Activatedservice) id;
     }
 
     public void update(Activatedservice activatedservice)

@@ -29,4 +29,6 @@ public class ClientService {
     public List<Client> list() {
         return dao.getAll();
     }
+
+    public List<Client> getByName(String name) { return dao.getByName(name); }
 }

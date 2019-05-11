@@ -56,5 +56,7 @@
     <bean id="ServiceDao" class="dao.ServiceDao"/>
 
     <bean id="ClientService" class="service.ClientService"/>
+    <bean id="ServiceService" class="service.ServiceService"/>
+    <bean id="ActivatedserviceService" class="service.ActivatedserviceService"/>
 
     </beans>

@@ -1,5 +1,7 @@
 package entities;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -13,7 +15,7 @@ public class Activatedservice implements Serializable {
     @Id
     private String number;
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Service service;
     private Timestamp starttime;
     private Timestamp endtime;

@@ -1,5 +1,7 @@
 package entities;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,15 +19,20 @@ public class Client {
     private BigDecimal balance = new BigDecimal(0.00);
     private BigDecimal creditlimit = new BigDecimal(100.00);
     private Integer credittime = 5;
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.EAGER)
     private List<Activatedservice> activatedservices = new ArrayList<Activatedservice>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.EAGER)
     private List<Charge> charges = new ArrayList<Charge>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.EAGER)
     private List<Contact> contacts = new ArrayList<Contact>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.EAGER)
     private List<Credit> credits = new ArrayList<Credit>();
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true,
+            fetch = FetchType.EAGER)
     private List<Deposit> deposits = new ArrayList<Deposit>();
 
     public Client() {

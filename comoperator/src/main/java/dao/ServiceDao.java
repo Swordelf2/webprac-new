@@ -36,6 +36,18 @@ public class ServiceDao {
     }
 
     @Transactional
+    public List<Service> getByNameAndDescription(String name, String description)
+    {
+        Session session = sessionFactory.openSession();
+        List<Service> clients = session.createQuery("from Service where name like :name " +
+                "and description like :description")
+                .setParameter("name", "%" + name + "%")
+                .setParameter("description", "%" + description + "%").list();
+        session.close();
+        return clients;
+    }
+
+    @Transactional
     public int add(Service service)
     {
         Session session = sessionFactory.openSession();

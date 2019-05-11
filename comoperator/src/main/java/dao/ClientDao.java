@@ -36,6 +36,16 @@ public class ClientDao {
     }
 
     @Transactional
+    public List<Client> getByName(String name)
+    {
+        Session session = sessionFactory.openSession();
+        List<Client> clients = session.createQuery("from Client where name like :name")
+                .setParameter("name", "%" + name + "%").list();
+        session.close();
+        return clients;
+    }
+
+    @Transactional
     public int add(Client client)
     {
         Session session = sessionFactory.openSession();
