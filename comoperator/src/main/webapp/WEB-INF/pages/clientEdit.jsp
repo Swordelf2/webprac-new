@@ -7,6 +7,7 @@
         <title>Редактирование клиента</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Редактирование клиента</h2>
 <form:form action="clientEdit" method="post" modelAttribute="client">
     ID: <form:hidden path="id"/> ${client.id}<br>

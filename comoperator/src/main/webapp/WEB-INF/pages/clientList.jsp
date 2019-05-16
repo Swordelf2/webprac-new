@@ -7,6 +7,7 @@
         <title>Клиенты</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Список клиентов:</h2>
 <form action="<c:url value="/clientList"/>" method="post">
     Имя: <input name="name" type="text">

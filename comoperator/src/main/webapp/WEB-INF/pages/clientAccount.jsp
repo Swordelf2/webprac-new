@@ -6,6 +6,7 @@
     <title>Счет клиента</title>
 </head>
 <body>
+<a href="index">На главную</a> <br>
 
 <h2>Счет клиента</h2>
 <table border="2px">

@@ -7,6 +7,7 @@
         <title>Услуги</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Список услуг:</h2>
 <form action="<c:url value="/serviceList"/>" method="post">
     Имя: <input name="name" type="text"> <br>

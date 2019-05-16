@@ -50,7 +50,6 @@ public class ClientDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(client);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -60,7 +59,6 @@ public class ClientDao {
     {
         Session session = sessionFactory.openSession();
         session.update(client);
-        session.flush();
         session.close();
     }
 
@@ -70,7 +68,6 @@ public class ClientDao {
         Session session = sessionFactory.openSession();
         Client client = (Client) session.get(Client.class, id);
         session.delete(client);
-        session.flush();
         session.close();
     }
 }

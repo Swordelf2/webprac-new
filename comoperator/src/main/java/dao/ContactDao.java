@@ -40,7 +40,6 @@ public class ContactDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(contact);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -50,7 +49,6 @@ public class ContactDao {
     {
         Session session = sessionFactory.openSession();
         session.update(contact);
-        session.flush();
         session.close();
     }
 
@@ -60,7 +58,6 @@ public class ContactDao {
         Session session = sessionFactory.openSession();
         Contact contact = (Contact) session.get(Contact.class, id);
         session.delete(contact);
-        session.flush();
         session.close();
     }
 }

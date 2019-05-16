@@ -7,9 +7,10 @@
         <title>Регистрация поступления на счет</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Регистрация поступления на счет</h2>
 <form action="newDeposit" method="post">
-    ID клиента: <input name="clientId" value="${client.id}"> <br>
+    ID клиента: <input name="clientId" value="<c:if test="${not empty client}">${client.id}</c:if>"> <br>
     Сумма: <input name="sum"> <br>
     Время: <input name="time" type="datetime-local"> <br>
     <button type="submit">Сохранить</button>

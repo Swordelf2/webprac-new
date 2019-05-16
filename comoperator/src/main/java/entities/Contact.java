@@ -23,7 +23,7 @@ public class Contact {
     public Contact(String type, String description, Client client) {
         this.type = type;
         this.description = description;
-        client.addContact(this);
+        this.client = client;
     }
 
     /* Getters and setters */

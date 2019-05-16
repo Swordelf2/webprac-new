@@ -7,6 +7,13 @@
         <title>История услуг</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
+<form action="<c:url value="/serviceHistory"/>" method="post">
+    <input name="id" type="hidden" value="${client.id}">
+    Начало интервала времени: <input name="starttime" type="text"> <br>
+    Конец интервала времени: <input name="endtime" type="text">
+    <input value="Поиск" type="submit">
+</form>
 <table border="2px">
     <tr>
         <td>ID</td>
@@ -25,7 +32,7 @@
         <th>Начало оказания</th>
         <th>Конец оказания</th>
     </tr>
-<c:forEach items="${client.activatedservices}" var="item">
+<c:forEach items="${servList}" var="item">
     <tr>
         <td>${item.number}</td>
         <td>${item.service.id}</td>

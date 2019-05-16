@@ -25,7 +25,7 @@ public class Deposit {
     public Deposit(BigDecimal sum, Timestamp time, Client client) {
         this.sum = sum;
         this.time = time;
-        client.addDeposit(this);
+        this.client = client;
     }
 
     /* Getters and setters */

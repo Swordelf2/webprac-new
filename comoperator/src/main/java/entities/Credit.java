@@ -28,7 +28,7 @@ public class Credit {
         this.sum = sum;
         this.startdate = startdate;
         this.enddate = enddate;
-        client.addCredit(this);
+        this.client = client;
     }
 
     /* Getters and setters */

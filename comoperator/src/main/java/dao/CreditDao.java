@@ -40,7 +40,6 @@ public class CreditDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(credit);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -50,7 +49,6 @@ public class CreditDao {
     {
         Session session = sessionFactory.openSession();
         session.update(credit);
-        session.flush();
         session.close();
     }
 
@@ -60,7 +58,6 @@ public class CreditDao {
         Session session = sessionFactory.openSession();
         Credit credit = (Credit) session.get(Credit.class, id);
         session.delete(credit);
-        session.flush();
         session.close();
     }
 }

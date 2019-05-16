@@ -1,9 +1,7 @@
 package controller;
 
-import entities.Charge;
-import entities.Client;
-import entities.Credit;
-import entities.Deposit;
+import entities.*;
+import org.hibernate.query.Query;
 import service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -75,7 +75,29 @@ public class ClientController {
     @RequestMapping(value = "/serviceHistory", method = RequestMethod.GET)
     public String clientServiceHistory(ModelMap map, @RequestParam int id) {
         Client client = service.get(id);
+        List<Activatedservice> servList = client.getActivatedservices();
         map.addAttribute("client", client);
+        map.addAttribute("servList", servList);
+        return "serviceHistory";
+    }
+
+    @RequestMapping(value = "/serviceHistory", method = RequestMethod.POST)
+    public String clientServiceHistory(ModelMap map, @RequestParam String id,
+                                                     @RequestParam String starttime,
+                                                     @RequestParam String endtime) {
+        Client client = service.get(Integer.valueOf(id));
+        List<Activatedservice> initList = client.getActivatedservices();
+        List<Activatedservice> servList = new ArrayList<Activatedservice>();
+        Timestamp t1, t2;
+        t1 = Timestamp.valueOf(starttime);
+        t2 = Timestamp.valueOf(endtime);
+        for (Activatedservice as : initList) {
+            if ((as.getEndtime().after(t1) && as.getStarttime().before(t2))) {
+                servList.add(as);
+            }
+        }
+        map.addAttribute("client", client);
+        map.addAttribute("servList", servList);
         return "serviceHistory";
     }
 
@@ -86,6 +108,8 @@ public class ClientController {
         return "clientAccount";
     }
 
+    /* New deposit */
+
     @RequestMapping(value = "/newDeposit", method = RequestMethod.GET, params = "id")
     public String newDeposit(ModelMap map, @RequestParam int id) {
         Client client = service.get(id);
@@ -94,8 +118,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/newDeposit", method = RequestMethod.GET)
-    public String newDeposit(ModelMap map) {
-        //map.addAttribute("client", null);
+    public String newDeposit() {
         return "newDeposit";
     }
 
@@ -108,10 +131,17 @@ public class ClientController {
         return "newDeposit";
     }
 
-    @RequestMapping(value = "/newCharge", method = RequestMethod.GET)
+    /* New charge */
+
+    @RequestMapping(value = "/newCharge", method = RequestMethod.GET, params = "id")
     public String newCharge(ModelMap map, @RequestParam int id) {
         Client client = service.get(id);
         map.addAttribute("client", client);
+        return "newCharge";
+    }
+
+    @RequestMapping(value = "/newCharge", method = RequestMethod.GET)
+    public String newCharge() {
         return "newCharge";
     }
 
@@ -126,21 +156,31 @@ public class ClientController {
         return "newCharge";
     }
 
-    @RequestMapping(value = "/newCredit", method = RequestMethod.GET)
+    /* New credit */
+
+    @RequestMapping(value = "/newCredit", method = RequestMethod.GET, params = "id")
     public String newCredit(ModelMap map, @RequestParam int id) {
         Client client = service.get(id);
         map.addAttribute("client", client);
         return "newCredit";
     }
 
+    @RequestMapping(value = "/newCredit", method = RequestMethod.GET)
+    public String newCredit() {
+        return "newCredit";
+    }
+
     @RequestMapping(value = "/newCredit", method = RequestMethod.POST)
     public String newCredit(@RequestParam int clientId,
                             @RequestParam String sum,
-                            @RequestParam String startdate,
-                            @RequestParam String enddate) {
+                            @RequestParam String startdate) {
         Client client = service.get(clientId);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.valueOf(startdate));
+        cal.add(Calendar.DATE, client.getCredittime()); //minus number would decrement the days
+        Date enddate = new Date(cal.getTimeInMillis());
         creditService.add(new Credit(new BigDecimal(sum), Date.valueOf(startdate),
-                    Date.valueOf(enddate), client));
+                enddate, client));
         return "newCredit";
     }
 }

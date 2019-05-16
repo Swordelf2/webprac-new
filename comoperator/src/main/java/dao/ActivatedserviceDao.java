@@ -26,6 +26,7 @@ public class ActivatedserviceDao {
         return activatedservice;
     }
 
+    @Transactional
     public List<Activatedservice> getAll()
     {
         Session session = sessionFactory.openSession();
@@ -34,29 +35,29 @@ public class ActivatedserviceDao {
         return activatedservices;
     }
 
+    @Transactional
     public Activatedservice add(Activatedservice activatedservice)
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(activatedservice);
-        session.flush();
         session.close();
         return (Activatedservice) id;
     }
 
+    @Transactional
     public void update(Activatedservice activatedservice)
     {
         Session session = sessionFactory.openSession();
         session.update(activatedservice);
-        session.flush();
         session.close();
     }
 
+    @Transactional
     public void delete(int id)
     {
         Session session = sessionFactory.openSession();
         Activatedservice activatedservice = (Activatedservice) session.get(Activatedservice.class, id);
         session.delete(activatedservice);
-        session.flush();
         session.close();
     }
 }

@@ -52,7 +52,6 @@ public class ServiceDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(service);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -62,7 +61,6 @@ public class ServiceDao {
     {
         Session session = sessionFactory.openSession();
         session.update(service);
-        session.flush();
         session.close();
     }
 
@@ -72,7 +70,6 @@ public class ServiceDao {
         Session session = sessionFactory.openSession();
         Service service = (Service) session.get(Service.class, id);
         session.delete(service);
-        session.flush();
         session.close();
     }
 }

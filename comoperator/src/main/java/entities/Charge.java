@@ -29,8 +29,8 @@ public class Charge {
     public Charge(BigDecimal sum, Timestamp time, Client client, Service service) {
         this.sum = sum;
         this.time = time;
-        service.addCharge(this);
-        client.addCharge(this);
+        this.client = client;
+        this.service = service;
     }
 
     /* Getters and setters */

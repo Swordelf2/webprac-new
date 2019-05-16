@@ -7,6 +7,7 @@
         <title>Регистрация договора об оказании услуги</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Регистрация договора об оказании улуги</h2>
 <form action="newService" method="post">
     ID клиента: <input name="clientId" value="${client.id}"> <br>

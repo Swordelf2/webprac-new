@@ -7,12 +7,13 @@
         <title>Регистрация списания</title>
     </head>
 <body>
+<a href="index">На главную</a> <br>
 <h2>Регистрация списания</h2>
 <form action="newCharge" method="post">
     ID клиента: <input name="clientId" value="<c:if test="${not empty client}">${client.id}</c:if>"> <br>
     Сумма: <input name="sum"> <br>
     Время: <input name="time" type="datetime-local"> <br>
-    ID сервиса: <input name="serviceId"> <br>
+    ID услуги: <input name="serviceId"> <br>
     <button type="submit">Сохранить</button>
 </body>
 </html>

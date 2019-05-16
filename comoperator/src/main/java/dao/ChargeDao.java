@@ -40,7 +40,6 @@ public class ChargeDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(charge);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -50,7 +49,6 @@ public class ChargeDao {
     {
         Session session = sessionFactory.openSession();
         session.update(charge);
-        session.flush();
         session.close();
     }
 
@@ -60,7 +58,6 @@ public class ChargeDao {
         Session session = sessionFactory.openSession();
         Charge charge = (Charge) session.get(Charge.class, id);
         session.delete(charge);
-        session.flush();
         session.close();
     }
 }

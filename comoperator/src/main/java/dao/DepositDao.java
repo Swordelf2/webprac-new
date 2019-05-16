@@ -40,7 +40,6 @@ public class DepositDao {
     {
         Session session = sessionFactory.openSession();
         Serializable id = session.save(deposit);
-        session.flush();
         session.close();
         return (Integer) id;
     }
@@ -50,7 +49,6 @@ public class DepositDao {
     {
         Session session = sessionFactory.openSession();
         session.update(deposit);
-        session.flush();
         session.close();
     }
 
@@ -60,7 +58,6 @@ public class DepositDao {
         Session session = sessionFactory.openSession();
         Deposit deposit = (Deposit) session.get(Deposit.class, id);
         session.delete(deposit);
-        session.flush();
         session.close();
     }
 }
