@@ -4,60 +4,50 @@ import entities.Credit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
 
-@EnableTransactionManagement
-@Transactional
+@Repository
 public class CreditDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
-    @Transactional
     public Credit get(int id)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Credit credit = (Credit) session.get(Credit.class, id);
-        session.close();
         return credit;
     }
 
-    @Transactional
     public List<Credit> getAll()
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         List<Credit> credits = session.createQuery("from Credit").list();
-        session.close();
         return credits;
     }
 
-    @Transactional
     public int add(Credit credit)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Serializable id = session.save(credit);
-        session.close();
         return (Integer) id;
     }
 
-    @Transactional
     public void update(Credit credit)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(credit);
-        session.close();
     }
 
-    @Transactional
     public void delete(int id)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Credit credit = (Credit) session.get(Credit.class, id);
         session.delete(credit);
-        session.close();
     }
 }

@@ -4,60 +4,50 @@ import entities.Activatedservice;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
 
-@EnableTransactionManagement
-@Transactional
+@Repository
 public class ActivatedserviceDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
-    @Transactional
     public Activatedservice get(int id)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Activatedservice activatedservice = (Activatedservice) session.get(Activatedservice.class, id);
-        session.close();
         return activatedservice;
     }
 
-    @Transactional
     public List<Activatedservice> getAll()
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         List<Activatedservice> activatedservices = session.createQuery("from Activatedservice").list();
-        session.close();
         return activatedservices;
     }
 
-    @Transactional
     public Activatedservice add(Activatedservice activatedservice)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Serializable id = session.save(activatedservice);
-        session.close();
         return (Activatedservice) id;
     }
 
-    @Transactional
     public void update(Activatedservice activatedservice)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(activatedservice);
-        session.close();
     }
 
-    @Transactional
     public void delete(int id)
     {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Activatedservice activatedservice = (Activatedservice) session.get(Activatedservice.class, id);
         session.delete(activatedservice);
-        session.close();
     }
 }

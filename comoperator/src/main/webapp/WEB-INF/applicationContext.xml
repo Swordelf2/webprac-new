@@ -11,6 +11,8 @@
     <context:property-placeholder location="classpath:database.properties"/>
     <context:annotation-config/>
     <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="controller"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${db.driver}"/>
@@ -48,19 +50,5 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="ActivatedserviceDao" class="dao.ActivatedserviceDao"/>
-    <bean id="ChargeDao" class="dao.ChargeDao"/>
-    <bean id="ClientDao" class="dao.ClientDao"/>
-    <bean id="ContactDao" class="dao.ContactDao"/>
-    <bean id="CreditDao" class="dao.CreditDao"/>
-    <bean id="DepositDao" class="dao.DepositDao"/>
-    <bean id="ServiceDao" class="dao.ServiceDao"/>
 
-    <bean id="ClientService" class="service.ClientService"/>
-    <bean id="ServiceService" class="service.ServiceService"/>
-    <bean id="ActivatedserviceService" class="service.ActivatedserviceService"/>
-    <bean id="ChargeService" class="service.ChargeService"/>
-    <bean id="CreditService" class="service.CreditService"/>
-    <bean id="DepositService" class="service.DepositService"/>
-
-    </beans>
+</beans>
