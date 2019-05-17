@@ -13,8 +13,8 @@
     ID клиента: <input name="clientId" value="${client.id}"> <br>
     ID услуги: <input name="serviceId"> <br>
     Телефонный номер <input name="number"> <br>
-    Время начала: <input name="starttime" type="datetime-local">
-    Время окончания: <input name="endtime" type="datetime-local">
+    Время начала: <input name="starttime" type="datetime-local"> <br>
+    Время окончания: <input name="endtime" type="datetime-local"> <br>
     <button type="submit">Сохранить</button>
 </body>
 </html>
